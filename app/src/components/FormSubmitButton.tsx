@@ -9,7 +9,6 @@ type FormSubmitButtonProps = {
 
 } & ComponentProps<"button">
 
-
 export default function FormSubmitButton(
     {
         children,

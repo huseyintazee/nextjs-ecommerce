@@ -13,16 +13,16 @@ async function addProduct(formData: FormData) {
     const description = formData.get('description')?.toString();
     const imageUrl = formData.get('imageUrl')?.toString();
     const price = Number(formData.get('price') || 0);
-    throw Error('Tazwe')
-    // if (!name || !description || !imageUrl || !price) {
-    //     throw Error('Missing required fields');
-    // }
-    //
-    // await prisma.product.create({
-    //     data: {name, description, imageUrl, price}
-    // })
-    //
-    // redirect('/');
+
+    if (!name || !description || !imageUrl || !price) {
+        throw Error('Missing required fields');
+    }
+
+    await prisma.product.create({
+        data: {name, description, imageUrl, price}
+    })
+
+    redirect('/');
 }
 
 export default function AddProductPage() {

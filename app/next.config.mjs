@@ -1,11 +1,15 @@
-/** @type {import('next').NextConfig} */
+// @ts-check
+
+/**
+ * @type {import('next').NextConfig}
+ */
 const nextConfig = {
+    images: {
+        remotePatterns: [{ hostname: "images.unsplash.com" }],
+    },
     experimental: {
-        images:{
-          remotePatterns:[{hostname: "images.unsplash.com"}]
-        },
-        serverActions: true
-    }
-};
+        serverActions: true,
+    },
+}
 
 export default nextConfig;
