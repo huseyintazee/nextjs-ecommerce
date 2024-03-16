@@ -25,41 +25,51 @@ export default function CartEntry({cartItem: {product, quantity}, setProductQuan
 
     return (
         <div>
-            <div className={'flex flex-wrap items-center gap-3'}>
-                <Image
-                    src={product.imageUrl}
-                    alt={product.name}
-                    width={200}
-                    height={200}
-                    className={'rounded-lg'}
-                />
-            </div>
-            <div>
-                <Link href={'/products/' + product.id} className={'font-bold'}>
-                    {product.name}
-                </Link>
-                <div>
-                    Price: {formatPrice(product.price)}
-                </div>
-                <div className={'my-1 flex items-center gap-2'}>
-                    Quantity:
-                    <select
-                        className={'select select-bordered w-full max-w-[80px]'}
-                        defaultValue={quantity}
-                        onChange={e => {
-                            const newQuantity = parseInt(e.currentTarget.value)
-                            startTransition(async () => {
-                                await setProductQuantity(product.id, newQuantity)
-                            })
-                        }}
-                    >
-                        <option value={0}>0 (Remove)</option>
-                        {quantityOptions}
-                    </select>
-                </div>
-                <div className={'flex items-center gap-3'}>
-                    Total: {formatPrice(product.price * quantity)}
-                {isPending && <span className={'loading loading-spinner loading-sm'}></span>}
+            <div className="rounded-lg md:w-2/3">
+                <div className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
+                    <div className={'flex flex-wrap items-center gap-3'}>
+                        <Image
+                            src={product.imageUrl}
+                            alt={product.name}
+                            width={200}
+                            height={200}
+                            className={'rounded-lg'}
+                        />
+                    </div>
+                    <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
+                        <div className="mt-5 sm:mt-0">
+                            <Link href={'/products/' + product.id} className={'font-bold'}>
+                                {product.name}
+                            </Link>
+                        </div>
+                        <div className="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
+                            <div className={'my-1 flex items-center gap-2'}>
+                                Quantity:
+                                <select
+                                    className={'select select-bordered w-full max-w-[80px]'}
+                                    defaultValue={quantity}
+                                    onChange={e => {
+                                        const newQuantity = parseInt(e.currentTarget.value)
+                                        startTransition(async () => {
+                                            await setProductQuantity(product.id, newQuantity)
+                                        })
+                                    }}
+                                >
+                                    <option value={0}>0 (Remove)</option>
+                                    {quantityOptions}
+                                </select>
+                            </div>
+                            <div className={'flex items-center gap-3'}>
+                                Total: {formatPrice(product.price * quantity)}
+                                {isPending && <span className={'loading loading-spinner loading-sm'}></span>}
+                            </div>
+                            <div className="flex items-center space-x-4">
+                                <div>
+                                    Price: {formatPrice(product.price)}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div className={"divider"}/>
