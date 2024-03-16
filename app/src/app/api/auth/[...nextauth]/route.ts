@@ -1,5 +1,6 @@
 import NextAuth, {NextAuthOptions} from "next-auth";
 import {PrismaAdapter} from "@auth/prisma-adapter";
+import {PrismaClient} from "@prisma/client";
 import {prisma} from "@/lib/db/prisma";
 import {Adapter} from "next-auth/adapters";
 import {env} from "@/lib/env";
@@ -7,7 +8,7 @@ import GoogleProvider from "next-auth/providers/google"
 import {mergeAnonymousCartIntoUserCart} from "@/lib/db/cart";
 
 export const authOptions: NextAuthOptions = {
-    adapter: PrismaAdapter(prisma) as Adapter,
+    adapter: PrismaAdapter(prisma as PrismaClient) as Adapter,
     providers: [
         GoogleProvider({
             clientId: env.GOOGLE_CLIENT_ID,
