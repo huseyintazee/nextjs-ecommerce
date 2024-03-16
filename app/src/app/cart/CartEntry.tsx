@@ -33,7 +33,7 @@ export default function CartEntry({cartItem: {product, quantity}, setProductQuan
                             alt={product.name}
                             width={200}
                             height={200}
-                            className={'rounded-lg'}
+                            className={'w-full rounded-lg sm:w-40'}
                         />
                     </div>
                     <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">

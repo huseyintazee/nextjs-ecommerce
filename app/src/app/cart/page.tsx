@@ -31,7 +31,6 @@ export default async function CartPage() {
                     </button>
                 </div>
             </div>
-
         </div>
     )
 }
