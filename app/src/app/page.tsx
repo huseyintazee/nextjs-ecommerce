@@ -26,11 +26,6 @@ export default async function Home({searchParams: {page = "1"}}: HomeProps) {
 
     return (
         <div className={'flex flex-col items-center'}>
-            <div>
-                <Link href={'/add-product'} className={'btn-primary btn uppercase'}>
-                    Add Product
-                </Link>
-            </div>
             {currentPage === 1 &&
                 <div className={'hero rounded-xl bg-base-200'}>
                     <div className={'hero-content flex-col lg:flex-row'}>
